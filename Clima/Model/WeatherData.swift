@@ -9,13 +9,20 @@
 import Foundation
 
 struct WeatherData: Codable{
+    let coord: Coord
     let main: Main
     let name: String
     let weather: [Weather]
 }
+struct Coord: Codable{
+    let lon: Double
+    let lat: Double
+}
+
 struct Main: Codable{
     let temp: Double 
 }
 struct Weather: Codable{
     let id: Int 
 }
+

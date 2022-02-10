@@ -11,6 +11,7 @@ struct WeatherModel{
     let conditionid:Int
     let cityNane:String
     let temperature : Double
+    let days: [Daily]
     
     var temperatureString: String{
         var answ: String = String(round(temperature*10)/10)
@@ -23,7 +24,11 @@ struct WeatherModel{
             return  "cloud.bolt"
         case 300...321:
             return  "cloud.drizzle"
-        case 500...531:
+        case 500...504:
+            return  "cloud.sun.rain"
+        case 511:
+            return "snowflake"
+        case 520...531:
             return  "cloud.rain"
         case 600...622:
             return  "cloud.snow"

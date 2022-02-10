@@ -14,9 +14,22 @@ protocol WeatherManagerDelegate {
 }
 
 class WeatherManager {
+    
+    
     let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid=f7a0e2f9d6b594db0840192cc075f9a5&units=metric"
     
-    var delegate: WeatherManagerDelegate? 
+    var weather8DaysManager =  WeatherForWeekManager()
+    var delegate: WeatherManagerDelegate?
+    var weather8daysData : WeatherForWeekData?
+    var id: Int = 0
+    var temp : Double = 0
+    var name = ""
+    init() {
+        weather8DaysManager.delegate = self
+    }
+    
+    
+    
     func fetchWeather(cityname: String){
         let urlString = "\(weatherURL)&q=\(cityname)"
         performRequest(with: urlString)
@@ -36,28 +49,46 @@ class WeatherManager {
                 }
                 if let safedata = data{
                     let dataString = String(data: safedata, encoding: .utf8)
-                    if let weather = self.parseJSON( safedata){
-                        self.delegate?.didUpdateWeather(self, weather: weather);
-                    }
+                    self.parseJSON( safedata)
                 }
             }
             task.resume()
         }
     }
-    func parseJSON(_ weatherData: Data)->WeatherModel?{
+    
+    func parseJSON(_ weatherData: Data){
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
-            let id = decodedData.weather[0].id
-            let temp = decodedData.main.temp
-            let name = decodedData.name
-            let weather = WeatherModel(conditionid: id, cityNane: name, temperature: temp)
-            return weather
+            let lat = decodedData.coord.lat
+            let lon = decodedData.coord.lon
+            weather8DaysManager.fetchWeather(latitude: lat, longitude: lon)
+            id = decodedData.weather[0].id
+            temp = decodedData.main.temp
+            name = decodedData.name
+            return
         } catch  {
             self.delegate?.didFailWithError(error: error)
-            return nil
+            return
         }
         
     }
+    
+}
+
+
+//MARK: - WeatherForWeekDelegate
+
+extension WeatherManager : WeatherForWeekDelegate{
+    func didUpdateWeather(_ weatherManager: WeatherForWeekManager, weather8Days: WeatherForWeekData) {
+        weather8daysData = weather8Days
+        let weather = WeatherModel(conditionid: id, cityNane: name, temperature: temp, days: weather8daysData!.daily )
+        self.delegate?.didUpdateWeather(self, weather: weather);
+    }
+    
+    func didFailWithError(error: Error) {
+        delegate?.didFailWithError(error: error)
+    }
+    
     
 }

@@ -16,12 +16,14 @@ class WeatherViewController: UIViewController{
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
+    let locationManager = CLLocationManager()
+    var weatherManager = WeatherManager()
+    
     @IBAction func locationButtonPressed(_ sender: UIButton) {
         locationManager.requestLocation()
     }
     
-    let locationManager = CLLocationManager()
-    var weatherManager = WeatherManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,7 @@ class WeatherViewController: UIViewController{
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-
+        
     }
     
 }
@@ -78,6 +80,7 @@ extension WeatherViewController : WeatherManagerDelegate {
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityNane
+            print(weather.days)
         }
         
     }
