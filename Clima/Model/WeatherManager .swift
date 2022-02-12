@@ -82,7 +82,8 @@ class WeatherManager {
 extension WeatherManager : WeatherForWeekDelegate{
     func didUpdateWeather(_ weatherManager: WeatherForWeekManager, weather8Days: WeatherForWeekData) {
         weather8daysData = weather8Days
-        let weather = WeatherModel(conditionid: id, cityNane: name, temperature: temp, days: weather8daysData!.daily )
+        var weather = WeatherModel(conditionid: id, cityNane: name, temperature: temp, days: weather8daysData!.daily )
+        weather.decleareDaysOfWeek()
         self.delegate?.didUpdateWeather(self, weather: weather);
     }
     

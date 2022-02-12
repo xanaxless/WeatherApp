@@ -41,6 +41,7 @@ class WeatherViewController: UIViewController{
         locationManager.requestLocation()
         weekView.layer.cornerRadius = 30;
         weekView.layer.masksToBounds = true;
+        WeekStack.alignment = .leading
 
     }
     
@@ -87,12 +88,10 @@ extension WeatherViewController : WeatherManagerDelegate {
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityNane
-            for cell in self.WeekStack.arrangedSubviews {
-                self.WeekStack.removeArrangedSubview(cell)
-            }
-            for day in weather.days{
+            self.WeekStack.removeAllArrangedSubviews()
+            for (index,day) in weather.days.enumerated(){
                 let weatherCondition = weather.conditionNameDay(id: day.weather[0].id)
-                self.WeekStack.addArrangedSubview(WeatherDayCell(d:"1", w:weatherCondition, nT: Int(day.temp.night), dT: Int(day.temp.day)))
+                self.WeekStack.addArrangedSubview(WeatherDayCell(d:weather.daysOfWeek[index], w:weatherCondition, nT: Int(day.temp.night), dT: Int(day.temp.day)))
             }
         }
         

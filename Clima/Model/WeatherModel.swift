@@ -12,6 +12,7 @@ struct WeatherModel{
     let cityNane:String
     let temperature : Double
     let days: [Daily]
+    var daysOfWeek: [String] = []
     
     var temperatureString: String{
         var answ: String = String(round(temperature*10)/10)
@@ -68,5 +69,63 @@ struct WeatherModel{
         }
     }
     
+    mutating func decleareDaysOfWeek() {
+        var today = dayOfWeekNow()
+        daysOfWeek.append("Now")
+        for i in 1...7 {
+            var cur = dayOfWeekByNum(day:(today+i))
+            daysOfWeek.append(cur)
+        }
+    }
+    
+    func dayOfWeekNow() -> Int {
+        var today = Date().dayOfWeek()
+        switch today {
+        case "Monday":
+            return 1
+        case "Tuesday":
+            return 2
+        case "Wednesday":
+            return 3
+        case "Thursday":
+            return 4
+        case "Friday":
+            return 5
+        case "Saturday":
+            return 6
+        case "Sunday":
+            return 7
+        default:
+            return 1
+        }
+    }
+    
+    func dayOfWeekByNum(day: Int)->String{
+        var d = day
+        if(day>8){
+            d=(day%8)+1
+        }
+        if(day==8){
+            d=1
+        }
+        switch d{
+        case 1:
+            return "Mon"
+        case 2:
+            return "Tue"
+        case 3:
+            return "Wed"
+        case 4:
+            return "Thu"
+        case 5:
+            return "Fri"
+        case 6:
+            return "Sat"
+        case 7:
+            return "Sun"
+        default:
+            return "Mon"
+        }
+    }
 }
     

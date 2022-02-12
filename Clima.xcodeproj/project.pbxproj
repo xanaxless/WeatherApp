@@ -20,6 +20,8 @@
 		CB3884A127B6C4DC00ACB844 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB38849F27B6C4DC00ACB844 /* WeatherCell.swift */; };
 		CB3884A227B6C4DC00ACB844 /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB3884A027B6C4DC00ACB844 /* WeatherCell.xib */; };
 		CB443E8827B4F28D00599D25 /* WeatherForWeekManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB443E8727B4F28D00599D25 /* WeatherForWeekManager.swift */; };
+		CB482F7A27B7FB2600B007B4 /* DataExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB482F7927B7FB2600B007B4 /* DataExtention.swift */; };
+		CB482F7C27B7FEFF00B007B4 /* UIStackViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB482F7B27B7FEFF00B007B4 /* UIStackViewExtention.swift */; };
 		CB739EDF27B4D26D00D41574 /* WeatherForWeekData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB739EDE27B4D26D00D41574 /* WeatherForWeekData.swift */; };
 		CBA2AB11274913B400BECAEB /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA2AB10274913B400BECAEB /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,8 @@
 		CB38849F27B6C4DC00ACB844 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		CB3884A027B6C4DC00ACB844 /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
 		CB443E8727B4F28D00599D25 /* WeatherForWeekManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherForWeekManager.swift; sourceTree = "<group>"; };
+		CB482F7927B7FB2600B007B4 /* DataExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtention.swift; sourceTree = "<group>"; };
+		CB482F7B27B7FEFF00B007B4 /* UIStackViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtention.swift; sourceTree = "<group>"; };
 		CB739EDE27B4D26D00D41574 /* WeatherForWeekData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherForWeekData.swift; sourceTree = "<group>"; };
 		CBA2AB10274913B400BECAEB /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +81,8 @@
 			children = (
 				ADAA27B0231BBFAF00365194 /* AppDelegate.swift */,
 				ADAA27B2231BBFAF00365194 /* SceneDelegate.swift */,
+				CB482F7927B7FB2600B007B4 /* DataExtention.swift */,
+				CB482F7B27B7FEFF00B007B4 /* UIStackViewExtention.swift */,
 				CB102CD22746A7DD00D4586D /* Model */,
 				ADAA27C9231BC3F200365194 /* View */,
 				ADAA27C8231BC3E500365194 /* Controller */,
@@ -195,11 +201,13 @@
 				ADAA27B5231BBFAF00365194 /* WeatherViewController.swift in Sources */,
 				CB3884A127B6C4DC00ACB844 /* WeatherCell.swift in Sources */,
 				CB188677274773E200D8D614 /* WeatherData.swift in Sources */,
+				CB482F7A27B7FB2600B007B4 /* DataExtention.swift in Sources */,
 				ADAA27B1231BBFAF00365194 /* AppDelegate.swift in Sources */,
 				CB443E8827B4F28D00599D25 /* WeatherForWeekManager.swift in Sources */,
 				ADAA27B3231BBFAF00365194 /* SceneDelegate.swift in Sources */,
 				CB24886C27B6CBE300BCA7F7 /* WeatherDayCell.swift in Sources */,
 				CBA2AB11274913B400BECAEB /* WeatherModel.swift in Sources */,
+				CB482F7C27B7FEFF00B007B4 /* UIStackViewExtention.swift in Sources */,
 				CB102CD12746A7D700D4586D /* WeatherManager .swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

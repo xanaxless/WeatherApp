@@ -13,17 +13,17 @@ class WeatherDayCell: UIView {
     
     init(d: String, w: String, nT: Int, dT: Int) {
         super.init(frame: .zero)
-        self.contentMode = .scaleToFill
+        self.contentMode = .scaleAspectFit
         let stackView   = UIStackView()
         stackView.axis  = NSLayoutConstraint.Axis.horizontal
         stackView.distribution  = UIStackView.Distribution.fillEqually
         stackView.alignment = .fill
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.contentMode = .center
+        stackView.contentMode = .scaleAspectFit
         stackView.spacing = 40
         let la = UILabel()
         la.text = d
-        la.font = UIFont.systemFont(ofSize: 25.0)
+        la.font = UIFont.systemFont(ofSize: 20.0)
         let nightTemp = UILabel()
         nightTemp.text = "\(nT)°"
         nightTemp.font = UIFont.systemFont(ofSize: 30.0)
@@ -37,7 +37,7 @@ class WeatherDayCell: UIView {
         if let safeImage = image {
             let viewImage = UIImageView(image: safeImage)
             viewImage.frame(forAlignmentRect:  CGRect(x: 0, y: 0, width: 89.5, height: 89.5))
-            viewImage.contentMode = .scaleAspectFill
+            viewImage.contentMode = .scaleAspectFit
             stackView.addArrangedSubview(viewImage)
         }
         stackView.addArrangedSubview(nightTemp)
