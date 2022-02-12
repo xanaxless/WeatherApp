@@ -16,6 +16,11 @@ class WeatherViewController: UIViewController{
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     
+    @IBOutlet weak var weekView: UIView!
+    
+    @IBOutlet weak var WeekStack: UIStackView!
+    
+    
     let locationManager = CLLocationManager()
     var weatherManager = WeatherManager()
     
@@ -34,7 +39,9 @@ class WeatherViewController: UIViewController{
         
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
+        weekView.layer.cornerRadius = 30;
+        weekView.layer.masksToBounds = true;
+
     }
     
 }
@@ -80,7 +87,13 @@ extension WeatherViewController : WeatherManagerDelegate {
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityNane
-            print(weather.days)
+            for cell in self.WeekStack.arrangedSubviews {
+                self.WeekStack.removeArrangedSubview(cell)
+            }
+            for day in weather.days{
+                let weatherCondition = weather.conditionNameDay(id: day.weather[0].id)
+                self.WeekStack.addArrangedSubview(WeatherDayCell(d:"1", w:weatherCondition, nT: Int(day.temp.night), dT: Int(day.temp.day)))
+            }
         }
         
     }
@@ -106,3 +119,4 @@ extension WeatherViewController : CLLocationManagerDelegate {
             print(error)
     }
 }
+

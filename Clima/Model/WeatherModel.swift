@@ -43,4 +43,30 @@ struct WeatherModel{
         }
     }
     
+    func conditionNameDay(id: Int) -> String{
+        switch id {
+        case 200...232:
+            return  "cloud.bolt"
+        case 300...321:
+            return  "cloud.drizzle"
+        case 500...504:
+            return  "cloud.sun.rain"
+        case 511:
+            return "snowflake"
+        case 520...531:
+            return  "cloud.rain"
+        case 600...622:
+            return  "cloud.snow"
+        case 701...781:
+            return  "tornado"
+        case 800:
+            return  "sun.max"
+        case 801...804:
+            return  "cloud"
+        default:
+            return "cloud"
+        }
+    }
+    
 }
+    

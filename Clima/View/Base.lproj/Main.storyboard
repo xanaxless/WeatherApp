@@ -57,6 +57,10 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="374" id="9qR-5Z-TX0"/>
+                                            <constraint firstAttribute="height" constant="40" id="dA5-Ff-5zT"/>
+                                        </constraints>
                                     </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mYn-vV-MBC">
                                         <rect key="frame" x="254" y="51.5" width="120" height="115.5"/>
@@ -91,22 +95,24 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ti-bh-8Fw">
-                                        <rect key="frame" x="134" y="355.5" width="240" height="462.5"/>
+                                    <view alpha="0.65000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNc-Tz-zWy">
+                                        <rect key="frame" x="0.0" y="355.5" width="374" height="462.5"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbi-Dm-SwJ">
-                                                <rect key="frame" x="-131" y="-7" width="371" height="476"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <viewLayoutGuide key="contentLayoutGuide" id="Gz2-it-M4l"/>
-                                                <viewLayoutGuide key="frameLayoutGuide" id="9vD-Z7-kq6"/>
-                                            </scrollView>
+                                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SbH-bG-vsi">
+                                                <rect key="frame" x="8" y="8" width="358" height="442"/>
+                                            </stackView>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="SbH-bG-vsi" secondAttribute="bottom" constant="12.5" id="AlK-NV-1gw"/>
+                                            <constraint firstAttribute="width" constant="374" id="Er1-1K-qHz"/>
+                                            <constraint firstItem="SbH-bG-vsi" firstAttribute="top" secondItem="dNc-Tz-zWy" secondAttribute="top" constant="8" id="bEe-UK-LA8"/>
+                                            <constraint firstAttribute="height" constant="462.5" id="eeK-tO-OAj"/>
+                                            <constraint firstAttribute="trailing" secondItem="SbH-bG-vsi" secondAttribute="trailing" constant="8" id="mff-kH-3WX"/>
+                                            <constraint firstItem="SbH-bG-vsi" firstAttribute="leading" secondItem="dNc-Tz-zWy" secondAttribute="leading" constant="8" id="ti2-dc-gaf"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Tgv-vV-Mot" secondAttribute="trailing" id="Xxe-YD-sFY"/>
-                                    <constraint firstItem="Tgv-vV-Mot" firstAttribute="leading" secondItem="Wz9-jj-JbA" secondAttribute="leading" id="zMA-9O-gQ7"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="can-OR-uJU"/>
@@ -123,10 +129,12 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="WeekStack" destination="SbH-bG-vsi" id="mTG-gF-xGx"/>
                         <outlet property="cityLabel" destination="CWP-r8-Jsy" id="8cQ-3l-ufV"/>
                         <outlet property="conditionImageView" destination="mYn-vV-MBC" id="gpD-FU-YB0"/>
                         <outlet property="searchTextField" destination="2eh-wL-W34" id="VOW-aT-hm6"/>
                         <outlet property="temperatureLabel" destination="w9o-tW-03D" id="mF4-vV-JxK"/>
+                        <outlet property="weekView" destination="dNc-Tz-zWy" id="iXU-mn-jmf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
